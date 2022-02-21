@@ -11,8 +11,8 @@ API_KEY = 'doT9nmte7z-_9f9uv4bMgbH4CVtRm1MujeCylGpNf3ehoGN6miqoK1zmQGoFZ9wvjLkNy
 headers = {'Authorization': 'Bearer %s' % API_KEY}
 url='https://api.yelp.com/v3/businesses/search'
 
-access_key = "AKIA5OFFSXJ5DTZ6FI5T"
-secret_key = "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"
+access_key = "********************"
+secret_key = "****************************************"
 
 dynamodb = resource('dynamodb', region_name='us-east-1', aws_access_key_id=access_key,  aws_secret_access_key = secret_key)
 dynamodb_table = dynamodb.Table('yelp-restaurants')
