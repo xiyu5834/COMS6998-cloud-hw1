@@ -86,8 +86,9 @@ def send_email(email_address, msg):
 
 
 def lambda_handler(event, context):
-    access_key = "AKIA5OFFSXJ5DRR6BTNY"
-    secret_key = "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"
+
+    access_key = "********************"
+    secret_key = "****************************************"
     dynamodb = resource('dynamodb', region_name='us-east-1', aws_access_key_id=access_key,
                         aws_secret_access_key=secret_key)
     dynamodb_table = dynamodb.Table('yelp-restaurants')
