@@ -30,18 +30,22 @@ def get_restaurant_details(restaurantId, table):
 def get_sqs_msgs(sqs, queue_url):
     response = sqs.receive_message(
         QueueUrl=queue_url,
-        MaxNumberOfMessages=1,
+        MaxNumberOfMessages=10,
+        AttributeNames=[
+            'All'
+        ],
         MessageAttributeNames=[
             'All'
         ],
-        VisibilityTimeout=0,
+        VisibilityTimeout=30,
         WaitTimeSeconds=0)
+    print("Response:--------")
+    print(response)
     if "Messages" in response.keys():
         messages = response['Messages']
     else:
         messages = []
     return messages
-
 
 def send_email(email_address, msg):
     SENDER = "Reservation_System <xy2483@columbia.edu>"
@@ -96,7 +100,7 @@ def lambda_handler(event, context):
                            verify_certs=True, connection_class=RequestsHttpConnection
                            )
     sqs_client = boto3.client('sqs')
-    queue_url = 'https://sqs.us-west-2.amazonaws.com/547958585700/dining'
+    queue_url = "https://sqs.us-east-1.amazonaws.com/292582700758/testQueue"
     sqs_msgs = get_sqs_msgs(sqs_client, queue_url)
     for msg in sqs_msgs:
         cuisine = msg['MessageAttributes']['cuisine']['StringValue']
