@@ -47,7 +47,6 @@ def get_sqs_msgs(sqs, queue_url):
         messages = []
     return messages
 
-
 def send_email(email_address, msg):
     SENDER = "Reservation_System <xy2483@columbia.edu>"
     RECIPIENT = email_address
